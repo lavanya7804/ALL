@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Prediction</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            background: url("https://assets.clevelandclinic.org/transform/2fcd07c9-41fc-4911-8fa6-fbd9a5edb44c/vegan-food-bowl-1433432507") center/cover no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Allows scrolling if content exceeds viewport */
+            overflow-y: auto; /* Enables vertical scrolling */
+        }
+
+        /* Page Heading */
+        /* Page Heading */
+        
+
+        .header {
+            margin-top: 40px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* Ensures proper stacking on smaller screens */
+            width: 80%;
+            max-width: 950px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 40px 0; /* Adjust to position content lower */
+        }
+
+        /* Left Section - Form */
+        .form-container {
+            flex: 1;
+            padding: 40px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            padding-bottom: 5px0;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #117964;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #184d42;
+        }
+
+        /* Right Section - Image */
+        .right-section {
+            flex: 1;
+            background: url('https://www.dailynurse.com/wp-content/uploads/2017/01/patient-education-min.jpg') center/cover no-repeat;
+            height: auto;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            color: white;
+            min-height: 450px; /* Ensures image fills space */
+        }
+
+        .right-section .quote {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column-reverse; /* Image below form on small screens */
+            }
+            .right-section {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page Heading -->
+    
+
+    <div class="container">
+        <!-- Left Section - Form -->
+        <div class="form-container">
+            <h2>Details</h2>
+            <form action="/food" method="POST">
+                <label>Age:</label>
+                <input type="number" name="Age" required>
+
+                <label>Height (cm):</label>
+                <input type="number" name="Height" required>
+
+                <label>Weight (kg):</label>
+                <input type="number" name="Weight" required>
+
+                <label>Gender:</label>
+                <select name="Gender">
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select>
+
+                <label>Health Condition:</label>
+                <select name="HealthCondition">
+                    <option value="0">Normal</option>
+                    <option value="1">High Pressure</option>
+                    <option value="2">Diabetes</option>
+                </select>
+
+                <label>Fitness Goal:</label>
+                <select name="FitnessGoal">
+                    <option value="0">General Fitness</option>
+                    <option value="1">Weight Loss</option>
+                    <option value="2">Muscle Gain</option>
+                </select>
+
+                <label>Dietary Preference:</label>
+                <select name="Dietary">
+                    <option value="0">Vegetarian</option>
+                    <option value="1">Non-Vegetarian</option>
+                </select>
+
+                <label>Activity Level:</label>
+                <select name="ActivityStatus">
+                    <option value="0">Sedentary</option>
+                    <option value="1">Moderate</option>
+                    <option value="2">Active</option>
+                </select>
+
+                <label>Allergy:</label>
+                <select name="Allergy">
+                    <option value="0">None</option>
+                    <option value="1">Cow Milk</option>
+                    <option value="2">Eggs</option>
+                    <option value="3">Peanuts</option>
+                </select>
+
+                <button type="submit">Get Meal Plan</button>
+            </form>
+            <div id="result">
+                {% if result %}
+                <h3>Predicted Meals:</h3>
+                <ul>
+                    <li><strong>Breakfast:</strong> {{ result[0] }}</li>
+                    <li><strong>Lunch:</strong> {{ result[1] }}</li>
+                    <li><strong>Snacks:</strong> {{ result[2] }}</li>
+                    <li><strong>Dinner:</strong> {{ result[3] }}</li>
+                </ul>
+                {% else %}
+                    <p></p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Right Section - Image with Text Overlay -->
+        <div class="right-section">
+            <div class="quote">
+                <p></p>
+            </div>
+        </div>
+    </div>
+    
+   
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diabetes Prediction System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      padding: 20px;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 700px;
+      background: white;
+      padding: 30px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #2563eb, #10b981);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .result {
+      margin-top: 25px;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .success {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+
+    .info {
+      background-color: #e0f2fe;
+      color: #0369a1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🩸 Diabetes Prediction</h1>
+    <p class="subtitle">Advanced metabolic health assessment</p>
+
+    <label for="gender">🚻 Gender</label>
+    <select id="gender">
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+    <label for="age">📅 Age (years)</label>
+    <input type="number" id="age" min="0" max="120" />
+
+    <label for="hypertension">💓 Hypertension</label>
+    <select id="hypertension">
+      <option value="">Select</option>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+
+    <label for="heartDisease">❤️ Heart Disease</label>
+    <select id="heartDisease">
+      <option value="">Select</option>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+
+    <label for="smoking">🚬 Smoking History</label>
+    <select id="smoking">
+      <option value="">Select</option>
+      <option value="never">Never</option>
+      <option value="former">Former</option>
+      <option value="current">Current</option>
+      <option value="no info">No Info</option>
+    </select>
+
+    <label for="bmi">⚖️ BMI (kg/m²)</label>
+    <input type="number" id="bmi" step="0.1" min="10" max="50" />
+
+    <label for="hba1c">🧪 HbA1c Level (%)</label>
+    <input type="number" id="hba1c" step="0.1" min="3" max="15" />
+
+    <label for="glucose">🩸 Blood Glucose Level (mg/dL)</label>
+    <input type="number" id="glucose" min="50" max="500" />
+
+    <button onclick="predictDiabetes()">🔮 Predict Diabetes</button>
+
+    <div class="result info" id="result">Complete the form and click Predict to see the result.</div>
+  </div>
+
+  <script>
+  function showMessage(msg, isSuccess) {
+    const resultBox = document.getElementById("result");
+    resultBox.textContent = msg;
+    resultBox.className = "result " + (isSuccess ? "success" : "info");
+    resultBox.style.display = "block";
+  }
+
+  function predictDiabetes() {
+    const gender = document.getElementById("gender").value;
+    const age = document.getElementById("age").value;
+    const hypertension = document.getElementById("hypertension").value;
+    const heartDisease = document.getElementById("heartDisease").value;
+    const smoking = document.getElementById("smoking").value;
+    const bmi = document.getElementById("bmi").value;
+    const hba1c = document.getElementById("hba1c").value;
+    const glucose = document.getElementById("glucose").value;
+
+    // Check all fields are filled
+    if (!gender || !age || !hypertension || !heartDisease || !smoking || !bmi || !hba1c || !glucose) {
+      showMessage("⚠️ Please fill out all fields correctly.", false);
+      return;
+    }
+
+    // Prepare data to send to backend
+    const data = {
+  gender,
+  age,
+  hypertension,
+  heart_disease: heartDisease,
+  smoking_history: smoking,
+  bmi,
+  hba1c_level: hba1c,
+  blood_glucose_level: glucose
+};
+
+
+    fetch("/predict/diabetes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+      showMessage("🔍 Prediction Result: " + result.prediction, true);
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      showMessage("❌ Failed to connect to server. Try again later.", false);
+    });
+  }
+</script>
+
+
+</body>
+</html>

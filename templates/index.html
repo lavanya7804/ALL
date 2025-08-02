@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Esigned</title>
+
+    <!-- slider stylesheet -->
+    <!-- slider stylesheet -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+
+    <!-- fonts style -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom styles for this template -->
+    <link href="../static/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <!-- <link href="css/responsive.css" rel="stylesheet" /> -->
+     <style>
+  /* Button */
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  #chatbot-panel {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 400px;
+    height: 600px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1001;
+    overflow: hidden;
+  }
+
+  #chatbot-panel iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+  }
+</style>
+
+  </head>
+
+  <body>
+    <div class="hero_area">
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+            <a class="navbar-brand" href="index.html">
+              <span> ALL </span>
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div
+                class="d-flex ml-auto flex-column flex-lg-row align-items-center"
+              >
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="index.html"
+                      >Home <span class="sr-only">(current)</span></a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="about.html"> About </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="do.html"> What we do </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="portfolio.html"> Portfolio </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact us</a>
+                  </li>
+                </ul>
+                <div class="user_option">
+                  <a href="">
+                    <img src="../static/images/user.png" alt="" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- end header section -->
+      <!-- slider section -->
+      <section class="slider_section position-relative">
+        <div class="container">
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="1"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="2"
+              ></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col">
+                    <div class="detail-box">
+                      <div>
+                        <h2>Predict & Prevent with AI</h2>
+                        <h1>Health Risk Analysis</h1>
+                        <p>
+                          "Stay ahead of health risks with AI-powered
+                          predictions. Get insights for Diabetes, Blood
+                          Pressure, and Heart Attack risk factors."
+                        </p>
+                        <div class="">
+                          <a href=""> Get Started </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col">
+                    <div class="detail-box">
+                      <div>
+                        <h2>Know Your Sugar Levels</h2>
+                        <h1>Diabetes Risk Analyzer</h1>
+                        <p>
+                          Predict your diabetes risk and take control of your
+                          health before it’s too late.
+                        </p>
+                        <div class="">
+                          <a href=""> Get Started </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col">
+                    <div class="detail-box">
+                      <div>
+                        <h2>Stay in the Safe Zone</h2>
+                        <h1>Blood Pressure Checker</h1>
+                        <p>
+                          Monitor your blood pressure risk and prevent
+                          hypertension with AI insights.
+                        </p>
+                        <div class="">
+                          <a href=""> Get Started </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end slider section -->
+    </div>
+
+    <!-- who section -->
+
+    <section class="who_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="detail-box">
+              <div class="heading_container">
+                <h2>Diabetes Risk Prediction</h2>
+              </div>
+              <p>
+                Our AI-powered diabetes risk analyzer evaluates key factors like
+                blood sugar levels, BMI, and lifestyle habits to assess your
+                likelihood of developing diabetes. Get personalized
+                recommendations to manage your sugar levels and prevent
+                long-term complications.
+              </p>
+              <div>
+                <a href={{ url_for('diabetes')}}> Predict </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="img-box">
+              <img src="../static/images/d2.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="who_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="img-box">
+              <img src="../static/images/bp1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="detail-box">
+              <div class="heading_container">
+                <h2>Blood Pressure Risk Prediction</h2>
+              </div>
+              <p>
+                Monitor your risk of hypertension with our AI model, which
+                analyzes blood pressure readings, salt intake, and stress
+                levels. Stay ahead of high blood pressure with early detection
+                and expert lifestyle guidance.
+              </p>
+              <div>
+                <a href="./bp.html"> Predict </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="who_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="detail-box">
+              <div class="heading_container">
+                <h2>Heart Attack Risk Prediction</h2>
+              </div>
+              <p>
+                Predict your heart attack risk by assessing cholesterol levels,
+                blood pressure, and lifestyle factors like smoking and physical
+                activity. Take preventive steps with AI-driven insights to
+                maintain a healthy heart.
+              </p>
+              <div>
+                <a href="./heart.html"> Predict </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="img-box">
+              <img src="../static/images/who-img.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="who_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="img-box">
+              <img src="../static/images/who-img.jpg" alt="" />
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="detail-box">
+              <div class="heading_container">
+                <h2>KNOW YOUR DIET PLAN</h2>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrudLorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud
+              </p>
+              <div>
+                <a href="{{ url_for('food_plan') }}"> Read More </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end who section -->
+
+    <!-- work section -->
+    <section class="work_section layout_padding">
+      <div class="container">
+        <div class="heading_container">
+          <h2>CREATIVE WORKS</h2>
+          <p>
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation
+          </p>
+        </div>
+        <div class="work_container layout_padding2">
+          <div class="box b-1">
+            <img src="../static/images/w-1.png" alt="" />
+          </div>
+          <div class="box b-2">
+            <img src="../static/images/w-2.png" alt="" />
+          </div>
+          <div class="box b-3">
+            <img src="../static/images/w-3.png" alt="" />
+          </div>
+          <div class="box b-4">
+            <img src="../static/images/w-4.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end work section -->
+
+    <!-- info section -->
+    <section class="info_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="info_contact">
+              <h5>About Shop</h5>
+              <div>
+                <div class="img-box">
+                  <img
+                    src="../static/images/location-white.png"
+                    width="18px"
+                    alt=""
+                  />
+                </div>
+                <p>Address</p>
+              </div>
+              <div>
+                <div class="img-box">
+                  <img
+                    src="../static/images/telephone-white.png"
+                    width="12px"
+                    alt=""
+                  />
+                </div>
+                <p>+01 1234567890</p>
+              </div>
+              <div>
+                <div class="img-box">
+                  <img
+                    src="../static/images/envelope-white.png"
+                    width="18px"
+                    alt=""
+                  />
+                </div>
+                <p>demo@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="info_info">
+              <h5>Informations</h5>
+              <p>
+                ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="info_insta">
+              <h5>Instagram</h5>
+              <div class="insta_container">
+                <div>
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="../static/images/insta.png" alt="" />
+                    </div>
+                  </a>
+                  <a href="">
+                    <div class="insta-box b-2">
+                      <img src="../static/images/insta.png" alt="" />
+                    </div>
+                  </a>
+                </div>
+
+                <div>
+                  <a href="">
+                    <div class="insta-box b-3">
+                      <img src="../static/images/insta.png" alt="" />
+                    </div>
+                  </a>
+                  <a href="">
+                    <div class="insta-box b-4">
+                      <img src="../static/images/insta.png" alt="" />
+                    </div>
+                  </a>
+                </div>
+                <div>
+                  <a href="">
+                    <div class="insta-box b-3">
+                      <img src="../static/images/insta.png" alt="" />
+                    </div>
+                  </a>
+                  <a href="">
+                    <div class="insta-box b-4">
+                      <img src="../static/images/insta.png" alt="" />
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="info_form">
+              <h5>Newsletter</h5>
+              <form action="">
+                <input type="email" placeholder="Enter your email" />
+                <button>Subscribe</button>
+              </form>
+              <div class="social_box">
+                <a href="">
+                  <img src="../static/images/fb.png" alt="" />
+                </a>
+                <a href="">
+                  <img src="../static/images/twitter.png" alt="" />
+                </a>
+                <a href="">
+                  <img src="../static/images/linkedin.png" alt="" />
+                </a>
+                <a href="">
+                  <img src="../static/images/youtube.png" alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end info_section -->
+
+    <!-- footer section -->
+    <section class="container-fluid footer_section">
+      <p>
+        &copy; 2020 All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </section>
+    <!-- footer section -->
+<button id="chatbot-toggle" title="Chatbot">💬</button>
+
+<!-- Panel with iframe -->
+<div id="chatbot-panel">
+  <iframe src="/hello"></iframe>
+</div>
+
+    <script
+      type="text/javascript"
+      src="../static/js/jquery-3.4.1.min.js"
+    ></script>
+    <script type="text/javascript" src="../static/js/bootstrap.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+    ></script>
+    <!-- owl carousel script 
+    -->
+    <script type="text/javascript">
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        margin: 0,
+        navText: [],
+        center: true,
+        autoplay: true,
+        autoplayHoverPause: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          1000: {
+            items: 3,
+          },
+        },
+      });
+
+
+     const toggleBtn = document.getElementById("chatbot-toggle");
+  const panel = document.getElementById("chatbot-panel");
+
+  toggleBtn.addEventListener("click", () => {
+    panel.style.display = panel.style.display === "none" ? "block" : "none";
+  });
+    </script>
+    <!-- end owl carousel script -->
+  </body>
+</html>

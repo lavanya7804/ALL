@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Attack Prediction System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        h1 {
+            color: #1e3a8a;
+            font-size: 2.5rem;
+            margin-bottom: 0;
+        }
+        p.subtitle {
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+        }
+        button {
+            background: linear-gradient(to right, #2563eb, #10b981);
+            color: white;
+            padding: 12px 24px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .info-box {
+            background-color: #e0f2fe;
+            padding: 15px;
+            border-left: 5px solid #2563eb;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .guidelines {
+            margin-top: 40px;
+        }
+        .guidelines ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .section-title {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>❤️ Heart Attack Prediction System</h1>
+    <p class="subtitle">AI-powered Cardiovascular Risk Assessment</p>
+
+    <h3 class="section-title">🧍 Patient Information</h3>
+    <form>
+        <div class="form-row">
+            <label for="age">📅 Age (years)</label>
+            <input type="number" id="age" min="0" max="120">
+
+            <label for="sex">🚻 Sex</label>
+            <select id="sex">
+                <option>Select sex</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+
+            <label for="cp">💔 Chest Pain Type</label>
+            <select id="cp">
+                <option>Select type</option>
+                <option>Typical Angina</option>
+                <option>Atypical Angina</option>
+                <option>Non-anginal Pain</option>
+                <option>Asymptomatic</option>
+            </select>
+
+            <label for="trestbps">🩺 Resting Blood Pressure (mm Hg)</label>
+            <input type="number" id="trestbps" min="80" max="200">
+
+            <label for="chol">🩸 Serum Cholesterol (mg/dL)</label>
+            <input type="number" id="chol" min="100" max="400">
+
+            <label for="fbs">🍬 Fasting Blood Sugar > 120 mg/dL?</label>
+            <select id="fbs">
+                <option>Select</option>
+                <option>True</option>
+                <option>False</option>
+            </select>
+
+            <label for="restecg">💓 Resting ECG Results</label>
+            <select id="restecg">
+                <option>Select</option>
+                <option>Normal</option>
+                <option>ST-T Wave Abnormality</option>
+                <option>Left Ventricular Hypertrophy</option>
+            </select>
+
+            <label for="thalach">🏃 Max Heart Rate Achieved</label>
+            <input type="number" id="thalach" min="60" max="220">
+
+            <label for="exang">🚶 Exercise-Induced Angina</label>
+            <select id="exang">
+                <option>Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+
+        <button type="button">🔮 Predict Heart Attack</button>
+    </form>
+
+    <div class="info-box">
+        Prediction pending... Fill the form and click Predict to see your risk level.
+    </div>
+
+    <div class="guidelines">
+        <h3 class="section-title">📌 Cardiovascular Risk Levels</h3>
+        <ul>
+            <li><strong>Low Risk</strong>: Maintain healthy lifestyle</li>
+            <li><strong>Moderate Risk</strong>: Consult a doctor and follow-up regularly</li>
+            <li><strong>High Risk</strong>: Immediate medical attention recommended</li>
+        </ul>
+    </div>
+</div>
+<script>
+    document.querySelector("button").addEventListener("click", async () => {
+        const data = {
+            age: document.getElementById("age").value,
+            sex: document.getElementById("sex").value,
+            cp: document.getElementById("cp").value,
+            trestbps: document.getElementById("trestbps").value,
+            chol: document.getElementById("chol").value,
+            fbs: document.getElementById("fbs").value,
+            restecg: document.getElementById("restecg").value,
+            thalach: document.getElementById("thalach").value,
+            exang: document.getElementById("exang").value
+        };
+
+        const res = await fetch("/predict/heart", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        document.querySelector(".info-box").textContent = result.prediction;
+    });
+</script>
+
+</body>
+</html>
