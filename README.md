@@ -42,4 +42,4 @@ This web application helps predict various health risks such as:
 ![Prediction Result](static/images/s5.png)
 
 ### 🔹 Diet Plan 
-![Prediction Result](static/images/s6.png)
+![Prediction Result](static/images/s6.jpg)
